@@ -1,4 +1,4 @@
-# Mattson_Alexander_assignment2
+# Mattson_Alexander_Assignment4
 CSCI 2720: Assignment 2 - Sorted Linked List
 [To pair remote key with odin](https://github.com/cs1302uga/cs1302-tutorials/blob/master/github-setup.md#setting-up-ssh-keys)
 
