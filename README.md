@@ -10,6 +10,28 @@ Sarah Alexander
 811190156
 sa29588@uga.edu
 
+
+======================  changes to be made ===========
+
+Circular
+    - in main: insert (i), delete (d), length (l), print (p), deleteSub (b), mode (m),
+
+Doubly
+    - 
+
+NodeType
+    -make it with data, fwd, and backward, use for both list classes
+
+swapAlternate, 
+
+
+
+
+
+
+
+
+
 We partner coded for most of the classes. Rachel spent more time implementing merge, intersect, deleteAlt while Sarah spent time figuring out the time complexities. 
 
 

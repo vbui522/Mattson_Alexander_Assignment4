@@ -36,7 +36,7 @@ void printElement() {
   cout <<  this << " "<<  item.getValue()  << " " << next  << endl;
 }
 			    
-  ItemType item;
+  ItemType item; // TODO - data
   ListNode *next;
 
 };
