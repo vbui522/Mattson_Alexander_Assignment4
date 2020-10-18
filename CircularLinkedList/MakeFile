@@ -1,0 +1,19 @@
+
+# I don think this functions...
+
+main: main.o ItemType.o NodeType.o CircularLinkedList.o
+	$(CXX) $(CXXFLAGS) -o main main.o ItemType.o NodeType.o CircularLinkedList.o
+main.o: main.cpp CircularLinkedList.h
+# Customer.h
+	$(CXX) $(CXXFLAGS) -c main.cpp
+CircularLinkedList.o : ItemType.h NodeType.h CircularLinkedList.h 
+
+clean:
+	rm -rf *.o
+	rm -rf main
+compile:
+	g++ -std=c++0x -o main *.cpp
+run:
+	./main input1.txt
+
+

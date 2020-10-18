@@ -22,7 +22,7 @@ Doubly
 NodeType
     -make it with data, fwd, and backward, use for both list classes
 
-swapAlternate, 
+swapAlternate, deleteSubsection, mode
 
 
 
