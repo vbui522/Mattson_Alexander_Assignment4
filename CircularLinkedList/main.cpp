@@ -25,7 +25,7 @@ int main(int argc, char **argv)
         return 1;
     }
 
-    CircularLinkedList bossList;
+    CircularLinkedList * bossList = new CircularLinkedList();
     ItemType item;
     int input;
     std::fstream file;
@@ -33,23 +33,17 @@ int main(int argc, char **argv)
 
     if(file.is_open()){
         cout << "opened file" << endl;
-        file >> input;
-        while (!file.eof()) { // fast error checking
+        while (!file.eof()) { 
+            file >> input;
             item.initialize(input);
-            bossList.insertItem(item);
-            file >> input; // next thing
+            bossList->insertItem(item);
+            // cin.get();
+            // file >> input; // next thing
         }
     } else {
         cout << "Failed to open the input file" << endl;
         return 1;
     }
 
-    bossList.print();
-
-    // read in file
-
-    // present menu
-
-    // 
-
+    bossList->print();
 }

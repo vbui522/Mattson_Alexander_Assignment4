@@ -14,7 +14,7 @@ class CircularLinkedList{
     void deleteItem(ItemType &item);
     int lengthIs() const;
     void print();
-    void findItem(ItemType item, NodeType *location, NodeType * predLoc, bool found);
+    void findItem(ItemType item, NodeType * &location, NodeType *& predLoc, bool &found);
     private:
     NodeType * listData;
     int length;
