@@ -2,6 +2,9 @@
     "C_Cpp.errorSquiggles": "Enabled",
     "files.associations": {
         "type_traits": "cpp",
-        "iostream": "cpp"
+        "iostream": "cpp",
+        "*.tcc": "cpp",
+        "istream": "cpp",
+        "string": "cpp"
     }
 }
