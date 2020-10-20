@@ -163,4 +163,103 @@ void CircularLinkedList::print()
         } while (location != listData->next);
         cout << endl;
     }
+    return;
 }
+
+// not neccesary for assignment...
+void CircularLinkedList::printReverse() {
+
+if (listData != nullptr)
+    {
+        // NodeType *predLoc = listData;
+        NodeType *location = listData->next;
+
+        int max_travel = lengthIs() - 1;
+        int travel = max_travel;
+
+        while(travel >= 0) {
+            // cout << "traveling " << travel << " indices" << endl;
+            // find one
+            int curr = 0;
+            location = listData->next;
+            while (travel != curr) {
+                location = location->next;
+                curr++;
+            }
+            cout << location->data.getValue() << " ";
+            travel--;
+        }
+       // loop around many times? 
+    }
+    cout << endl;
+    return;
+}
+
+void CircularLinkedList::deleteSubsection(int lower, int upper) {
+    // For comparison
+    ItemType lowerBound;
+    lowerBound.initialize(lower);
+    ItemType upperBound;
+    upperBound.initialize(upper);
+
+     if (listData != nullptr)
+    {
+        // NodeType *predLoc = listData;
+        NodeType *location = listData->next;
+// || location->data.compareTo(lowerBound) == ItemType::EQUAL
+// || location->data.compareTo(upperBound) == ItemType::EQUAL)
+        do
+        {
+            cout << "===================" << endl;
+            cout << "examining " << location->data.getValue() << " ";
+            if (location->data.compareTo(lowerBound) == ItemType::GREATER && location->data.compareTo(upperBound) == ItemType::LESS ){
+                 cout << "deleting " << location->data.getValue() << endl;
+                 deleteItem(location->data);
+                 print();
+             } else if (location->data.compareTo(lowerBound) == ItemType::EQUAL || location->data.compareTo(upperBound) == ItemType::EQUAL) {
+                 cout << "deleting " << location->data.getValue() << endl;
+                 deleteItem(location->data);
+                 print();
+             }
+            location = location->next;
+    
+
+            // predLoc = location;
+        } while (location != listData->next);
+        print();
+    }
+    return;
+}
+
+// // not neccesary for assignment...
+// void CircularLinkedList::printReverse() {
+
+// if (listData != nullptr)
+//     {
+//         // NodeType *predLoc = listData;
+//         NodeType *location = listData->next;
+
+//         int max_travel = lengthIs() - 1;
+//         int travel = max_travel;
+
+//         while(travel >= 0) {
+//             // cout << "traveling " << travel << " indices" << endl;
+//             // find one
+//             int curr = 0;
+//             location = listData->next;
+//             while (travel != curr) {
+//                 location = location->next;
+//                 curr++;
+//             }
+//             cout << location->data.getValue() << " ";
+//             travel--;
+//         }
+//        // loop around many times? 
+//     }
+//     cout << endl;
+//     return;
+
+// }
+
+// mode
+// find largest subsection

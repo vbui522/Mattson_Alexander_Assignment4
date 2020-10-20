@@ -101,7 +101,25 @@ int main(int argc, char **argv)
         }
         else if (choice.compare("b") == 0)
         {
+            bossList->print(); // works on empty?
+            cout << "Enter lower bound to delete: ";
+            string input;
+            int linteger;
+            cin >> input;                    //read in string
+            istringstream(input) >> linteger; // convert string to integer
 
+            cout << "Enter upper bound to delete: ";
+            int uinteger;
+            cin >> input;                    //read in string
+            istringstream(input) >> uinteger; // convert string to integer
+
+            if (bossList->lengthIs() == 0)
+            {
+                cout << "You cannot cannot delete from an empty list." << endl;
+                continue;
+            } else {
+                bossList->deleteSubsection(linteger, uinteger);
+            }
         }
         else if (choice.compare("m") == 0)
         {

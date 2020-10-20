@@ -24,6 +24,10 @@ public:
     int lengthIs() const;
     void print();
     void findItem(ItemType item, NodeType *&location, NodeType *&predLoc, bool &found);
+    void printReverse();
+    // void swapAlternate();
+    void deleteSubsection(int lower, int upper);
+    void mode();
 
 private:
     NodeType *listData;
