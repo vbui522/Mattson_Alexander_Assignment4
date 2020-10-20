@@ -231,6 +231,41 @@ void CircularLinkedList::deleteSubsection(int lower, int upper) {
     return;
 }
 
+
+void CircularLinkedList::mode() {
+
+    NodeType *location = listData->next;
+    ItemType mode;
+    int count;
+
+    // in order to return the first mode if there are multiple
+    ItemType first_of_mode;
+
+    mode = listData->data;
+    int max_count = 1;
+    count = 1; // ?
+     do
+        {
+            // cout << "===================" << endl;
+            if (location->next->data.compareTo(location->data) == ItemType::EQUAL) {
+                count++;
+            } else {
+                count = 1;
+            }
+            // cout << count <<  endl;
+            if (count > max_count) {
+                max_count = count;
+                mode = location->data;
+                // cout << " updated mode to " << mode.getValue() << " with count " << count << endl;
+            }
+
+            location = location->next;
+            // predLoc = location;
+        } while (location != listData->next);
+        cout << mode.getValue() <<  endl;
+        return;
+}
+
 // // not neccesary for assignment...
 // void CircularLinkedList::printReverse() {
 

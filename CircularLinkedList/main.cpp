@@ -123,6 +123,7 @@ int main(int argc, char **argv)
         }
         else if (choice.compare("m") == 0)
         {
+            bossList->mode();
 
         }
         else if (choice.compare("q") == 0)
