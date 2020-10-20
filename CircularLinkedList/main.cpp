@@ -15,7 +15,7 @@ using namespace std;
 
 int main(int argc, char **argv)
 {
-    cout << "Hello, World" << endl;
+    // cout << "How is World?" << endl;
 
     if (argc <= 1)
     {
@@ -31,7 +31,7 @@ int main(int argc, char **argv)
 
     if (file.is_open())
     {
-        cout << "opened file" << endl;
+        // cout << "opened file" << endl;
         while (!file.eof())
         {
             file >> input;
@@ -61,7 +61,7 @@ int main(int argc, char **argv)
         if (choice.compare("i") == 0)
         {
             bossList->print(); // works on empty?
-            cout << "Enter number: ";
+            cout << "Number to insert: ";
             string input;
             int integer;
             cin >> input;                    //read in string
@@ -74,7 +74,7 @@ int main(int argc, char **argv)
         else if (choice.compare("d") == 0)
         {
             bossList->print(); // works on empty?
-            cout << "Enter value to delete: ";
+            cout << "Number to delete: ";
             string input;
             int integer;
             cin >> input;                    //read in string
@@ -102,13 +102,13 @@ int main(int argc, char **argv)
         else if (choice.compare("b") == 0)
         {
             bossList->print(); // works on empty?
-            cout << "Enter lower bound to delete: ";
+            cout << "Enter lower bound: ";
             string input;
             int linteger;
             cin >> input;                    //read in string
             istringstream(input) >> linteger; // convert string to integer
 
-            cout << "Enter upper bound to delete: ";
+            cout << "Enter upper bound: ";
             int uinteger;
             cin >> input;                    //read in string
             istringstream(input) >> uinteger; // convert string to integer

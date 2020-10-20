@@ -37,7 +37,7 @@ void CircularLinkedList::findItem(ItemType item, NodeType *&location, NodeType *
     location = listData->next;
     predLoc = listData;
     found = false;
-    cout << "predloc is " << predLoc->data.getValue() << endl;
+    // cout << "predloc is " << predLoc->data.getValue() << endl;
 
     while (moreToSearch && !found)
     {
@@ -60,7 +60,7 @@ void CircularLinkedList::findItem(ItemType item, NodeType *&location, NodeType *
             // }
         }
     }
-    cout << "leaving findItem, predLoc is " << predLoc->data.getValue() << endl;
+    // cout << "leaving findItem, predLoc is " << predLoc->data.getValue() << endl;
     return;
 }
 
@@ -71,7 +71,7 @@ int CircularLinkedList::lengthIs() const
 
 void CircularLinkedList::insertItem(ItemType &item)
 {
-    cout << "Trying to insert " << item.getValue() << endl;
+    // cout << "Trying to insert " << item.getValue() << endl;
     // pretty similar to the way its done in the book.
     // I think I've traced through it wnought o understnad what's happening
     // cout << "1" << endl;
@@ -87,7 +87,7 @@ void CircularLinkedList::insertItem(ItemType &item)
 
     if (listData != nullptr)
     {
-        cout << "inserting to list" << endl;
+        // cout << "inserting to list" << endl;
         findItem(item, location, predLoc, found);
 
         // if (found)
@@ -101,20 +101,20 @@ void CircularLinkedList::insertItem(ItemType &item)
         // if taking last spot in list
         if (item.compareTo(listData->data) == ItemType::GREATER)
         { //TODO direction
-            cout << "insert to end" << endl;
+            // cout << "insert to end" << endl;
             listData = newNode;
         }
     }
     else
     { // list is empty
-        cout << "Inserting to empty list" << endl;
+        // cout << "Inserting to empty list" << endl;
         listData = newNode;      // was null
         newNode->next = newNode; 
     }
     length++;
-    cout << "Leaving insert" << endl;
-    print();
-    cout << " " << endl;
+    // cout << "Leaving insert" << endl;
+    // print();
+    // cout << " " << endl;
     return;
 }
 
@@ -127,7 +127,7 @@ void CircularLinkedList::deleteItem(ItemType &item)
 
     findItem(item, location, predLoc, found);
     if (!found) {
-        cout << "Item not found in list" << endl;
+        cout << "Item not in list!" << endl;
         return;
     }
 
@@ -210,14 +210,14 @@ void CircularLinkedList::deleteSubsection(int lower, int upper) {
 // || location->data.compareTo(upperBound) == ItemType::EQUAL)
         do
         {
-            cout << "===================" << endl;
-            cout << "examining " << location->data.getValue() << " ";
+            // cout << "===================" << endl;
+            // cout << "examining " << location->data.getValue() << " ";
             if (location->data.compareTo(lowerBound) == ItemType::GREATER && location->data.compareTo(upperBound) == ItemType::LESS ){
-                 cout << "deleting " << location->data.getValue() << endl;
+                //  cout << "deleting " << location->data.getValue() << endl;
                  deleteItem(location->data);
                  print();
              } else if (location->data.compareTo(lowerBound) == ItemType::EQUAL || location->data.compareTo(upperBound) == ItemType::EQUAL) {
-                 cout << "deleting " << location->data.getValue() << endl;
+                //  cout << "deleting " << location->data.getValue() << endl;
                  deleteItem(location->data);
                  print();
              }
@@ -262,7 +262,7 @@ void CircularLinkedList::mode() {
             location = location->next;
             // predLoc = location;
         } while (location != listData->next);
-        cout << mode.getValue() <<  endl;
+        cout << "Mode: " <<mode.getValue() <<  endl;
         return;
 }
 
