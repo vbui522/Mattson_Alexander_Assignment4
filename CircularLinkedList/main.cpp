@@ -86,12 +86,14 @@ int main(int argc, char **argv)
             {
                 cout << "You cannot cannot delete from an empty list." << endl;
                 continue;
+            } else {
+                bossList->deleteItem(dItem);
             }
 
         }
         else if (choice.compare("l") == 0)
         {
-            bossList->lengthIs();
+            cout << bossList->lengthIs() <<  endl;;
         }
         else if (choice.compare("p") == 0)
         {

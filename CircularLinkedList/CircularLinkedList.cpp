@@ -89,10 +89,10 @@ void CircularLinkedList::insertItem(ItemType &item)
         cout << "inserting to list" << endl;
         findItem(item, location, predLoc, found);
 
-        if (found)
-        {
-            return;
-        }
+        // if (found)
+        // {
+        //     return;
+        // }
         
         newNode->next = location; // predloc-> next
         predLoc->next = newNode;
@@ -125,7 +125,12 @@ void CircularLinkedList::deleteItem(ItemType &item)
     bool found;
 
     findItem(item, location, predLoc, found);
-    if (predLoc = location)
+    if (!found) {
+        cout << "Item not found in list" << endl;
+        return;
+    }
+
+    if (predLoc == location)
     {
         listData = nullptr;
     } // single node in list
@@ -139,6 +144,7 @@ void CircularLinkedList::deleteItem(ItemType &item)
     }
     delete location; // actually remove object
     length--;
+    return;
 }
 
 void CircularLinkedList::print()
