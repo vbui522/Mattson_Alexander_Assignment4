@@ -16,12 +16,9 @@ using namespace std;
 CircularLinkedList::CircularLinkedList()
 {
     listData = nullptr;
-    // listData->next = listData;
     length = 0;
-    // currentPos = nullptr;
 }
 
-//need not default constructor
 
 //deconstructor
 CircularLinkedList::~CircularLinkedList()
@@ -33,12 +30,6 @@ CircularLinkedList::~CircularLinkedList()
         NodeType *location = listData->next;
 
         NodeType *temp;
-        // while (lengthIs() > 0) {
-        //     cout << lengthIs() < " ";
-        //     // temp = &location;
-        //     deleteItem(location->data); // gotta make sure next is right w pointer notation
-        //     // delete temp;
-        // }
         do
         {
             deleteItem(location->data);
@@ -166,7 +157,7 @@ void CircularLinkedList::print()
     {
         NodeType *predLoc = listData;
         NodeType *location = predLoc->next;
-
+        // iterate through list
         do
         {
             cout << location->data.getValue() << " ";
