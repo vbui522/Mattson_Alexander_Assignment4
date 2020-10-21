@@ -11,43 +11,20 @@ Sarah Alexander
 sa29588@uga.edu
 
 
-======================  changes to be made ===========
-
-Circular
-    - in main: insert (i), delete (d), length (l), print (p), deleteSub (b), mode (m),
-
-Doubly
-    - 
-
-NodeType
-    -make it with data, fwd, and backward, use for both list classes
-
-swapAlternate, deleteSubsection, mode
-
-
-
-
-
-
-
-
 
 We partner coded for most of the classes. Rachel spent more time implementing merge, intersect, deleteAlt while Sarah spent time figuring out the time complexities. 
 
 
-Major Steps to complete:
-
-1) Construct classes
-2) Implement merge, delete alt nodes, find common elements
-3) properly take in input in main to access functions
-4) Makefile, README, etc
-
-
-Pseudocode for Intersection:
+Circular Linked List:
+Pseudocode for deleteSubsection:
 
 For our intersection method, we created a new SortedLinkedList and a ListNode was created to access the elements of the SortedLinkedList being passed in. We then had a while loop to loop through the list being passed in. Within the while loop, we have an if statement that uses our searchItem method in order to find values that are the same. After confirming a value was found that was the same, an ItemType object was created to initialize and insert items into a final list. It loops through until the next item is null, which then causes the loop to break. At the end of the method, we return the final list. 
 
 ![](intersectionO.PNG)
+
+
+Pseudocode for mode:
+
 
 Time Complexity of Intersection:
 
