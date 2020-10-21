@@ -1,3 +1,4 @@
+
 #include "ItemType.h"
 #include "DoublyLinkedList.h"
 #include <exception>
@@ -15,7 +16,7 @@ using namespace std;
 
 int main(int argc, char **argv)
 {
-    cout << "Hello, World" << endl;
+    //cout << "Hello, World" << endl;
 
     if (argc <= 1)
     {
@@ -31,15 +32,17 @@ int main(int argc, char **argv)
 
     if (file.is_open())
     {
-        cout << "opened file" << endl;
+        //    cout << "opened file" << endl;
+        file >> input;
         while (!file.eof())
         {
-            file >> input;
-            cout << "reading file: ";
+
+            //    cout << "reading file: ";
             item.initialize(input);
-            cout << item.getValue() << endl;
+            //cout << item.getValue() << endl;
             bossList->insertItem(item);
-            cin.get();
+            //cin.get();
+            file >> input;
             // file >> input; // next thing
         }
     }
@@ -50,17 +53,15 @@ int main(int argc, char **argv)
     }
 
     bossList->print();
-    cout << "insert (i), delete (d), length (l), print (p), deleteSub (b), mode (m), quit (q)" << endl;
+    cout << "insert (i), delete (d), length (l), print (p), printReverse (r), swapAtl (s), quit (q)" << endl;
 
     string choice;
     bool running = true;
-}
-/*
+
     while (running)
     {
         cout << "Enter a command: ";
         cin >> choice;
-
         if (choice.compare("i") == 0)
         {
             bossList->print(); // works on empty?
@@ -84,29 +85,34 @@ int main(int argc, char **argv)
             istringstream(input) >> integer; // convert string to integer
             ItemType dItem;
             dItem.initialize(integer);
-
             if (bossList->lengthIs() == 0)
             {
                 cout << "You cannot cannot delete from an empty list." << endl;
                 continue;
             }
-
+            bossList->deleteItem(dItem);
+            bossList->print();
         }
         else if (choice.compare("l") == 0)
         {
-            bossList->lengthIs();
+
+            cout << "The length is: " << bossList->lengthIs() << endl;
         }
         else if (choice.compare("p") == 0)
         {
             bossList->print();
         }
-        else if (choice.compare("b") == 0)
+        else if (choice.compare("r") == 0)
         {
-
+            bossList->printReverse();
         }
-        else if (choice.compare("m") == 0)
+        else if (choice.compare("s") == 0)
         {
-
+            cout << "Original List: ";
+            bossList->print();
+            bossList->swapAlternate();
+            cout << "Swapped List: ";
+            bossList->print();
         }
         else if (choice.compare("q") == 0)
         {
@@ -115,4 +121,3 @@ int main(int argc, char **argv)
         }
     }
 }
-*/

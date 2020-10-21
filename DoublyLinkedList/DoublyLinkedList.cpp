@@ -1,5 +1,4 @@
 
-
 #include "DoublyLinkedList.h"
 #include "ItemType.h"
 #include <iostream>
@@ -11,37 +10,27 @@ DoublyLinkedList::DoublyLinkedList()
 {
     head = nullptr;
     tail = nullptr;
-    //  length = 0;
+    length = 0;
 }
 
 DoublyLinkedList::~DoublyLinkedList()
 {
-    NodeType temp = *head;
-    while (temp.next != 0)
+    NodeType *temp = head;
+    NodeType *temp2 = tail;
+    NodeType *delNode = head;
+    while (temp->next != 0)
     {
-        NodeType next = *temp.next;
-        temp = next;
+        delNode = temp;
+        temp = temp->next;
+        delete delNode;
     }
     delete head;
+    delete tail;
 }
 
 int DoublyLinkedList::lengthIs() const
 {
-    if (head == nullptr)
-    {
-        return 0;
-    }
-    int count = 0;
-    NodeType *temp;
-    temp = head;
-    do
-    {
-        count++;
-        temp = temp->next;
-    } while (temp != nullptr);
-    {
-        return count;
-    }
+    return length;
 }
 
 void DoublyLinkedList::insertItem(ItemType &item)
@@ -50,16 +39,13 @@ void DoublyLinkedList::insertItem(ItemType &item)
     if (head == nullptr)
     {
         NodeType *temp = new NodeType;
-        head = temp;
+        head = temp; //head and tail are set to new node
         tail = temp;
         temp->data = item;
         temp->back = nullptr;
         temp->next = nullptr;
-        print();
-        cout << "inserted node: " << temp->data.getValue() << " fwd: " << temp->next << " back: " << temp->back << endl;
-        // cout <<  " head: " << head->data << " tail: " << tail->data << endl;
-         cout << head << endl;
-        cout << tail << endl;
+        length++;
+
         return;
     }
 
@@ -73,11 +59,8 @@ void DoublyLinkedList::insertItem(ItemType &item)
         //    tail = temp2 -> next;
         head = temp2;
         temp2->back = nullptr;
-        cout << "inserted node: " << temp2->data.getValue() << " fwd: " << temp2->next << " back: " << temp2->back << endl;
-        // cout <<  " head: " << head->data << " tail: " << tail->data << endl;
-        cout << head << endl;
-        cout << tail << endl;
-        print();
+        length++;
+
         return;
     }
 
@@ -90,58 +73,28 @@ void DoublyLinkedList::insertItem(ItemType &item)
         nTail->back = tail;
         tail = nTail;
         nTail->next = nullptr;
-        cout << "inserted node: " << nTail->data.getValue() << " fwd: " << nTail->next << " back: " << nTail->back << endl;
-        // cout <<  " head: " << head->data << " tail: " << tail->data << endl;
-        
-         cout << head << endl;
-            cout << tail << endl;
-        print();
+        length++;
+
         return;
     }
 
     // general case
     NodeType *temp3;
     temp3 = head;
-    // cout << temp3;
-    int  count = 0;
-    while (temp3 != nullptr || count > 20)
+
+    int count = 0;
+    while (temp3 != nullptr)
     {
-        count++;
-        // cout << "WILEY" << endl;
-        /*
-    if (item.compareTo(temp3 -> data) == ItemType::EQUAL) {
-
-      if (item.getValue() == temp3 -> data.getValue()) {
-        NodeType *nodeH = new NodeType;
-        nodeH -> data = item;
-        nodeH -> next = head;
-        head = nodeH;
-        nodeH -> back = nullptr;
-        return;
-      } // if head is equal to item
-      if (item.getValue() == temp3 -> data.getValue() && temp3->next->next == nullptr ) {
-        NodeType *nodeT = new NodeType;
-        nodeT -> data = item;
-        nodeT -> back = tail;
-        tail = nodeT;
-        nodeT -> next = nullptr;
-        return;
-      }//end if of tail is equal to item
-    } //end equal if
-
-    */
-
         // item is greater than list
-        if (temp3->next == nullptr) {
-
+        if (temp3->next == nullptr)
+        {
         }
-        // item.compareTo(temp3->data) == ItemType::GREATER || 
-        // if (temp has ,moveed off the list node) || (item is at the lower bound of list)
+        //general case if equal or less than
         if (item.compareTo(temp3->next->data) == ItemType::LESS || item.compareTo(temp3->next->data) == ItemType::EQUAL)
         {
-            cout << "in general" << endl;
+
             NodeType *newNode = new NodeType;
-            NodeType * succesor;
+            NodeType *succesor;
             succesor = temp3->next;
             newNode->data = item;
             newNode->next = temp3->next;
@@ -150,17 +103,7 @@ void DoublyLinkedList::insertItem(ItemType &item)
 
             // insert forwards
             temp3->next = newNode;
-
-
-            // insert backwards
-
-            
-            cout << "inserted node: " << newNode->data.getValue() << " fwd: " << newNode->next << " back: " << newNode->back << endl;
-            // cout <<  " head: " << head->data << " tail: " << tail->data << endl;
-            cout << head << endl;
-            cout << newNode << endl;
-            cout << tail << endl;
-            print();
+            length++;
             return;
         } // general case
         temp3 = temp3->next;
@@ -172,12 +115,10 @@ void DoublyLinkedList::insertItem(ItemType &item)
 void DoublyLinkedList::print()
 {
     NodeType *temp = head;
-    int count = 0;
-    while (temp != nullptr && count < 50)
+
+    while (temp != nullptr) //loopping through nodes until it equals nullptr
     {
-        count++;
         cout << temp->data.getValue() << " ";
-        // cout << "next is " << temp->next;
         temp = temp->next;
     }
     cout << endl;
@@ -186,8 +127,9 @@ void DoublyLinkedList::print()
 
 void DoublyLinkedList::printReverse()
 {
+    //sets new node equal to tail and goes backwards
     NodeType *temp = tail;
-    while (tail != nullptr)
+    while (temp != nullptr)
     {
         cout << temp->data.getValue() << " ";
         temp = temp->back;
@@ -198,28 +140,58 @@ void DoublyLinkedList::printReverse()
 
 void DoublyLinkedList::deleteItem(ItemType &item)
 {
-    if (head == 0)
+    //if deleting an empty case
+    if (head == nullptr)
     {
         cout << "You cannot delete from an empty list" << endl;
         return;
     }
+    //if item is equal to head
     else if (head->data.compareTo(item) == ItemType::EQUAL)
     {
+        NodeType *temp = head;
         head = head->next;
+        length--;
+        delete temp;
         return;
     }
     NodeType *temp1 = head;
     NodeType *temp2 = head->next;
 
-    while (temp2 != 0)
+    //looping through till temp2 is at the end
+    while (temp2 != nullptr)
     {
+        //if lands on node it is searching for
         if (temp2->data.compareTo(item) == ItemType::EQUAL)
         {
+            NodeType *tempDel = temp2;
             temp1->next = temp2->next;
+            length--;
+            print();
+            delete tempDel;
             return;
         }
-        temp1 = temp2->next;
+        temp1 = temp1->next;
         temp2 = temp2->next;
     }
     cout << "Item not found." << endl;
+}
+
+void DoublyLinkedList::swapAlternate()
+{
+    NodeType *temp = head;
+    NodeType *temp2 = temp->next;
+
+    if (lengthIs() == 0)
+    {
+        cout << "You cannot swap alternates on an empty list." << endl;
+        return;
+    }
+    //until temp does not equal null pointer and its next does not as well
+    while (temp != nullptr && temp->next != nullptr)
+    {
+        //call swap method to switch consecutive two nodes
+        swap(temp->data, temp->next->data);
+        temp = temp->next->next;
+    }
 }

@@ -1,5 +1,5 @@
 #include "ItemType.h"
-#include "NodeType.h"
+// #include "NodeType.h"
 #include "CircularLinkedList.h"
 // I forget if its neccesary to put these here w g++
 #include <cstddef>
@@ -56,7 +56,6 @@ void CircularLinkedList::findItem(ItemType item, NodeType *&location, NodeType *
     location = listData->next;
     predLoc = listData;
     found = false;
-    // cout << "predloc is " << predLoc->data.getValue() << endl;
 
     while (moreToSearch && !found)
     {

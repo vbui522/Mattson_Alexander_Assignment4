@@ -26,6 +26,7 @@ public:
  private:
   NodeType *head;
   NodeType *tail;
+  int length;
 
 };
 #endif

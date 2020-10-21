@@ -1,7 +1,6 @@
 #ifndef _CLLIST
 #define _CLLIST
 
-#include "NodeType.h"
 #include "ItemType.h"
 #include <string>
 using namespace std;
