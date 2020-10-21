@@ -220,8 +220,6 @@ void DoublyLinkedList::swapAlternate() {
       }
     }
     return;
-
-    //   return head;
 }
 
 
