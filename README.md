@@ -27,8 +27,8 @@ We first check that the list is not empty, redirecting the user if this is the c
 
 Compiling contructions:
 
-Use `make run` to run the file with input.txt seeding the list.
+cd into `DoublyLinkedList` or `CircularLinkedList`. Use `make run` to run the file with input.txt seeding the list.
 To enter in a different command line argument, use `make` to compile the code, then `./main <your_filename>` to run the program.
 
-To check that there are no memory leaks, compile everything with `make` then run valgrind --leak-check=yes -s ./bin/main input.txt 
+To check that there are no memory leaks, compile everything with `make` then run valgrind --leak-check=yes -s ./main input.txt 
 
