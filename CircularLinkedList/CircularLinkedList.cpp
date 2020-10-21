@@ -30,7 +30,7 @@ CircularLinkedList::~CircularLinkedList()
     {
         cout << "In deconstructor" << endl;
         // NodeType *predLoc = listData;
-        NodeType * location = listData->next;
+        NodeType *location = listData->next;
 
         NodeType *temp;
         // while (lengthIs() > 0) {
@@ -222,23 +222,15 @@ void CircularLinkedList::deleteSubsection(int lower, int upper)
     {
         // NodeType *predLoc = listData;
         NodeType *location = listData->next;
-        // || location->data.compareTo(lowerBound) == ItemType::EQUAL
-        // || location->data.compareTo(upperBound) == ItemType::EQUAL)
         do
         {
-            // cout << "===================" << endl;
-            // cout << "examining " << location->data.getValue() << " ";
             if (location->data.compareTo(lowerBound) == ItemType::GREATER && location->data.compareTo(upperBound) == ItemType::LESS)
             {
-                //  cout << "deleting " << location->data.getValue() << endl;
                 deleteItem(location->data);
-                print();
             }
             else if (location->data.compareTo(lowerBound) == ItemType::EQUAL || location->data.compareTo(upperBound) == ItemType::EQUAL)
             {
-                //  cout << "deleting " << location->data.getValue() << endl;
                 deleteItem(location->data);
-                print();
             }
             location = location->next;
 
@@ -256,33 +248,29 @@ void CircularLinkedList::mode()
     ItemType mode;
     int count;
 
-    // in order to return the first mode if there are multiple
-    ItemType first_of_mode;
-
     mode = listData->data;
     int max_count = 1;
     count = 1; // ?
     do
     {
-        // cout << "===================" << endl;
+        // if the next item is the same as the current
         if (location->next->data.compareTo(location->data) == ItemType::EQUAL)
         {
             count++;
         }
-        else
+        else // start the count over again
         {
             count = 1;
         }
-        // cout << count <<  endl;
+        // update mode if neccesary
         if (count > max_count)
         {
             max_count = count;
             mode = location->data;
             // cout << " updated mode to " << mode.getValue() << " with count " << count << endl;
         }
-
+        // iterate through list
         location = location->next;
-        // predLoc = location;
     } while (location != listData->next);
     cout << "Mode: " << mode.getValue() << endl;
     return;
