@@ -164,8 +164,8 @@ void CircularLinkedList::print()
             // predLoc = location;
             location = location->next;
         } while (location != listData->next);
-        cout << endl;
     }
+    cout << endl;
     return;
 }
 
@@ -214,25 +214,9 @@ void CircularLinkedList::deleteSubsection(int lower, int upper)
     if (listData != nullptr)
     {
         // NodeType *predLoc = listData;
-        // NodeType *location = listData->next;
-        // do
-        // {
-        //     if (location->data.compareTo(lowerBound) == ItemType::GREATER && location->data.compareTo(upperBound) == ItemType::LESS)
-        //     {
-        //         deleteItem(location->data);
-        //     }
-        //     else if (location->data.compareTo(lowerBound) == ItemType::EQUAL || location->data.compareTo(upperBound) == ItemType::EQUAL)
-        //     {
-        //         deleteItem(location->data);
-        //     }
-        //     location = location->next;
-
-        //     // predLoc = location;
-        // } while (location != listData->next);
-        NodeType *location = listData;
-        while (location != listData->next) {
-            location = location->next;
-
+        NodeType *location = listData->next;
+        do
+        {
             if (location->data.compareTo(lowerBound) == ItemType::GREATER && location->data.compareTo(upperBound) == ItemType::LESS)
             {
                 deleteItem(location->data);
@@ -241,8 +225,34 @@ void CircularLinkedList::deleteSubsection(int lower, int upper)
             {
                 deleteItem(location->data);
             }
+            location = location->next;
+
             // predLoc = location;
-        } 
+        } while (location != listData);
+
+        // Do one last check
+        if (location->data.compareTo(lowerBound) == ItemType::GREATER && location->data.compareTo(upperBound) == ItemType::LESS)
+            {
+                deleteItem(location->data);
+            }
+            else if (location->data.compareTo(lowerBound) == ItemType::EQUAL || location->data.compareTo(upperBound) == ItemType::EQUAL)
+            {
+                deleteItem(location->data);
+            }
+        // NodeType *location = listData;
+        // while (location != listData->next) {
+        //     location = location->next;
+
+        //     if (location->data.compareTo(lowerBound) == ItemType::GREATER && location->data.compareTo(upperBound) == ItemType::LESS)
+        //     {
+        //         deleteItem(location->data);
+        //     }
+        //     else if (location->data.compareTo(lowerBound) == ItemType::EQUAL || location->data.compareTo(upperBound) == ItemType::EQUAL)
+        //     {
+        //         deleteItem(location->data);
+        //     }
+        //     // predLoc = location;
+        // } 
         cout << "Modified List: ";
         print();
 
@@ -252,7 +262,10 @@ void CircularLinkedList::deleteSubsection(int lower, int upper)
 
 void CircularLinkedList::mode()
 {
-
+    if (lengthIs()  < 1) {
+        cout << "Cannot find mode on empty list" << endl;
+        return;
+    }
     NodeType *location = listData->next;
     ItemType mode;
     int count;
