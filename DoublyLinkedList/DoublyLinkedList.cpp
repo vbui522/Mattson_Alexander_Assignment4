@@ -177,6 +177,53 @@ void DoublyLinkedList::deleteItem(ItemType &item)
     cout << "Item not found." << endl;
 }
 
+void DoublyLinkedList::swapAlternate() {
+
+
+ // If linked list is empty or
+    // there is only one node in list
+  if (head == nullptr || head->next == nullptr) {
+    cout << "The list is not big enough for the operation." << endl;
+    return;
+  }
+    // Initialize previous and current pointers
+    NodeType *before = head;
+    NodeType *currNode = head->next;
+    NodeType *n = currNode->next;
+    head = currNode; // Change head before proceeeding
+
+    while (true) { //trace through list
+      n = currNode->next; //set n node
+      currNode -> next = before; // Change next of
+        // current as previous node
+
+      if (n == nullptr || n->next == nullptr) { //to stop tracing through list
+        before -> next = n;
+        //      return;
+        break;
+      }
+      // Change next of previous to next next
+      before -> next = n -> next;
+      before = n;
+      currNode = before->next;
+    }
+
+    NodeType *trace = head;
+    NodeType *traceB = head -> next;
+    trace -> back = nullptr;
+
+    while (trace -> next != nullptr) {// to link them backwards
+      trace -> next -> back = trace;
+      trace = trace -> next;
+      if (trace -> next == nullptr) { //reset tail in list
+        tail = trace;
+      }
+    }
+    return;
+}
+
+
+/*
 void DoublyLinkedList::swapAlternate()
 {
     NodeType *temp = head;
@@ -195,3 +242,4 @@ void DoublyLinkedList::swapAlternate()
         temp = temp->next->next;
     }
 }
+*/
