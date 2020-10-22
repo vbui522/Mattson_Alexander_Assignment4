@@ -203,6 +203,8 @@ void CircularLinkedList::printReverse()
 
 void CircularLinkedList::deleteSubsection(int lower, int upper)
 {
+    cout << "Original List: ";
+    print();
     // For comparison
     ItemType lowerBound;
     lowerBound.initialize(lower);
@@ -212,9 +214,25 @@ void CircularLinkedList::deleteSubsection(int lower, int upper)
     if (listData != nullptr)
     {
         // NodeType *predLoc = listData;
-        NodeType *location = listData->next;
-        do
-        {
+        // NodeType *location = listData->next;
+        // do
+        // {
+        //     if (location->data.compareTo(lowerBound) == ItemType::GREATER && location->data.compareTo(upperBound) == ItemType::LESS)
+        //     {
+        //         deleteItem(location->data);
+        //     }
+        //     else if (location->data.compareTo(lowerBound) == ItemType::EQUAL || location->data.compareTo(upperBound) == ItemType::EQUAL)
+        //     {
+        //         deleteItem(location->data);
+        //     }
+        //     location = location->next;
+
+        //     // predLoc = location;
+        // } while (location != listData->next);
+        NodeType *location = listData;
+        while (location != listData->next) {
+            location = location->next;
+
             if (location->data.compareTo(lowerBound) == ItemType::GREATER && location->data.compareTo(upperBound) == ItemType::LESS)
             {
                 deleteItem(location->data);
@@ -223,11 +241,11 @@ void CircularLinkedList::deleteSubsection(int lower, int upper)
             {
                 deleteItem(location->data);
             }
-            location = location->next;
-
             // predLoc = location;
-        } while (location != listData->next);
+        } 
+        cout << "Modified List: ";
         print();
+
     }
     return;
 }
