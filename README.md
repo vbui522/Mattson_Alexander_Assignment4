@@ -29,7 +29,7 @@ We iterate through the list, keeping track of how many times we pass through gro
 Doubly Linked List:
 PseudoCode for SwapAlternates
 
-We made sure the head is not nullpointer or the node after head in order to ensure we have something to swap. We then make three NodeTypes to keep track of nodes we are currently on or ones that we want to swap. We then used a while loop to iterate through the list of nodes and would reset our three NodeTypes to point to corresponding nodes that we wanted to swap. If the node that was pointing to the next node after our current one was null, we broke the loop. We then had another while loop outside the one iterating through the list in order to link the nodes backwards, making it doubly linked. 
+We made sure the head is not nullpointer or the node after head in order to ensure we have something to swap. We then make three NodeTypes to keep track of nodes we are currently on or ones that we want to swap. We then used a while loop to iterate through the list of nodes and would reset our three NodeTypes to point to corresponding nodes that we wanted to swap. If the node that was pointing to the next node after our current one was null, we broke the loop. We then had another while loop outside the one iterating through the list in order to link the nodes backwards, making it doubly linked. This will cause our time complexity for the swap alternate method to be O(n). 
 
 ![](swapAltO.PNG)
 
