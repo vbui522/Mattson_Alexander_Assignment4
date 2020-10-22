@@ -17,7 +17,7 @@ For our intersection method, we created a new SortedLinkedList and a ListNode wa
 
 Since we need to find a upper and lower bound less than n, it is reasonable to expect most algorithms will be in the set O(n).
 
-![](deletesubO.PNG)
+![deletesubO](deletesubO.PNG)
 
 Pseudocode for mode: 
 
