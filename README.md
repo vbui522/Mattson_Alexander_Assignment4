@@ -34,7 +34,6 @@ We made sure the head is not nullpointer or the node after head in order to ensu
 ![](swapAltO.PNG)
 
 
-We first check that the list is not empty, redirecting the user if this is the case. Then we iterate though the list and swap from every other node. We use std::swap which has O(n) according to c++ documentation. We call this up to n/2 times, so the overall complexity of this function is O(.5n\*n) = O(n^2). This could be done with a complexity of O(n) if implemented recursively, as in this method two on [geeksforgeeks](https://www.geeksforgeeks.org/pairwise-swap-elements-of-a-given-linked-list/).
 
 
 Compiling contructions:
